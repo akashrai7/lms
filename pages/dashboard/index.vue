@@ -1,50 +1,52 @@
 <template>
   <div class="main-content-container overflow-hidden">
     <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <dashboard-e-commerce-welcome-dashboard />
-        <dashboard-e-commerce-total-sales-chart />
+      <div class="col-xxl-6">
+        <DashboardLMSWelcomeDashboard />
       </div>
-      <div class="col-lg-4">
+      <div class="col-xxl-6">
         <div class="row justify-content-center">
-          <div class="col-md-4 col-lg-12">
-            <dashboard-e-commerce-total-orders-chart />
+          <div class="col-lg-4 col-sm-4">
+            <DashboardLMSTotalCourses />
           </div>
-          <div class="col-md-4 col-lg-12">
-            <dashboard-e-commerce-total-customers-chart />
+          <div class="col-lg-4 col-sm-4">
+            <DashboardLMSTotalEnrolled />
           </div>
-          <div class="col-md-4 col-lg-12">
-            <dashboard-e-commerce-total-revenue-chart />
+          <div class="col-lg-4 col-sm-4">
+            <DashboardLMSTotalMentors />
           </div>
         </div>
       </div>
     </div>
-
     <div class="row justify-content-center">
-      <div class="col-lg-5">
-        <dashboard-e-commerce-sales-by-locations />
+      <div class="col-xxl-7 col-lg-6">
+        <DashboardLMSStudentsInterestedTopicsChart />
       </div>
-      <div class="col-lg-7">
-        <dashboard-e-commerce-top-selling-products />
+      <div class="col-xxl-5 col-lg-6">
+        <DashboardLMSTopInstructors />
       </div>
     </div>
-
     <div class="row justify-content-center">
-      <div class="col-xl-7 col-xxl-8 col-lg-7">
-        <dashboard-e-commerce-recent-orders />
+      <div class="col-xxl-4">
+        <DashboardLMSStudentsProgress />
       </div>
-      <div class="col-xl-5 col-xxl-4 col-lg-5">
-        <dashboard-e-commerce-order-summary-chart />
+      <div class="col-xxl-4 col-md-6">
+        <DashboardLMSGroupLessons />
+      </div>
+      <div class="col-xxl-4 col-md-6">
+        <DashboardLMSEnrolledByCountries />
       </div>
     </div>
-
+    <DashboardLMSCourses />
     <div class="row justify-content-center">
-      <div class="col-xl-5 col-xxl-4 col-lg-5">
-        <dashboard-e-commerce-recent-transactions />
+      <div class="col-lg-4">
+        <DashboardLMSCoursesSalesChart />
       </div>
-
-      <div class="col-xl-7 col-xxl-8 col-lg-7">
-        <dashboard-e-commerce-returning-customer-rate-chart />
+      <div class="col-lg-4">
+        <DashboardLMSTimeSpentChart />
+      </div>
+      <div class="col-lg-4">
+        <DashboardLMSOurTopCourses />
       </div>
     </div>
   </div>
@@ -54,12 +56,6 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "EcommercePage",
+  name: "LMSPage",
 });
-
-definePageMeta({
-  middleware: 'auth'
-});
-
-
 </script>
