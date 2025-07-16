@@ -1,0 +1,67 @@
+/**
+@File: Trezo Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+**/
+
+// Fonts
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap");
+
+// Default variable overrides
+@import "./variables";
+
+:root {
+  --fontFamily: "Inter", sans-serif;
+  --blackColor: #3a4252;
+  --whiteColor: #ffffff;
+  --bodyColor: #64748b;
+  --borderColor: #eceef2;
+  --transition: 0.5s;
+  --fontSize: 14px;
+  --primaryColor: #605dff;
+  --secondaryColor: #3584fc;
+  --successColor: #25b003;
+  --dangerColor: #ff4023;
+  --warningColor: #ffc107;
+  --infoColor: #0dcaf0;
+  --lightColor: #f8f9fa;
+  --darkColor: #212529;
+  --purpleColor: #ad63f6;
+  --orangeColor: #fd5812;
+}
+
+// Components
+@import "./components/global";
+@import "./components/ui-kit";
+@import "./components/sidebar-menu";
+@import "./components/main-content";
+@import "./components/header-area";
+@import "./components/footer-area";
+@import "./components/status-box";
+@import "./components/sales-by-locations";
+@import "./components/default-table";
+@import "./components/pagination";
+@import "./components/calendar";
+@import "./components/chat";
+@import "./components/timeline";
+@import "./components/priceing";
+@import "./components/products";
+@import "./components/rtl";
+@import "./components/dark-mode";
+@import "./components/sidebar-dark";
+@import "./components/header-dark";
+@import "./components/footer-dark";
+@import "./components/card-style";
+@import "./components/card-bg-style";
+@import "./components/fluid-boxed-style";
+@import "./components/landing-page";
+@import "./components/analytics";
+@import "./components/nft";
+@import "./components/marketing";
+@import "./components/theme-settings";
