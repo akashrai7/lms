@@ -140,9 +140,11 @@ console.log('Login response:', res);
       if (role === 'admin') {
         router.push('/admin/dashboard');
       } else if (role === 'teacher') {
-        router.push('/teacher/dashboard');
+        router.push('/dashboard');
+      //  router.push('/teacher/dashboard');
       } else {
-        router.push('/student/dashboard');
+        router.push('/dashboard');
+        // router.push('/student/dashboard');
       }
     } else {
       console.log('Invalid response format:', res); 

@@ -80,7 +80,7 @@ export default defineEventHandler(async (ctx) => {
     );
 
 
-  const resetLink = `http://localhost:3000/authentication/forget-password?token=${resetToken}`;
+  const resetLink = `https://lms-git-master-akashrai7s-projects.vercel.app/authentication/forget-password?token=${resetToken}`;
 
   await transporter.sendMail({
     from: process.env.SMTP_EMAIL,
