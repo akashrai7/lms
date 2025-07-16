@@ -44,11 +44,12 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    output: {
-      dir: "dist",
-      serverDir: "dist/server",
+      preset: "vercel",
     },
-  },
+  runtimeConfig: {
+        MONGO_URI: process.env.MONGO_URI,
+      },
+    
   pages: true,
   components: true,
   compatibilityDate: "2025-01-31",
