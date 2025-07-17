@@ -76,7 +76,7 @@ export default defineEventHandler(async (ctx) => {
  const resetToken = jwt.sign(
       { userId: user._id },
       process.env.JWT_SECRET as string,
-      { expiresIn: '15m' }
+      { expiresIn: '600m' }
     );
 
 
