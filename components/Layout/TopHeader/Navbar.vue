@@ -1852,8 +1852,9 @@
                       to="/authentication/logout"
                       class="sidemenu-link border-radius d-block position-relative transition fw-medium"
                     >
-                      Logout
+                      Logoutt
                     </NuxtLink>
+                    <button @click="router.push('/logout')" class="btn btn-danger">Logout</button>
                   </li>
                 </ul>
               </div>
@@ -2306,6 +2307,41 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+function getDeviceId(): string {
+  let id = localStorage.getItem('device_id');
+  if (!id) {
+    id = 'dev-' + Math.random().toString(36).substring(2, 10);
+    localStorage.setItem('device_id', id);
+  }
+  return id;
+}
+
+onMounted(async () => {
+  const deviceId = getDeviceId();
+  const token = localStorage.getItem('token');
+
+  try {
+    await $fetch('/api/auth/logout', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      body: { deviceId }
+    });
+  } catch (error) {
+    console.error('Logout failed:', error);
+  }
+
+  localStorage.removeItem('token');
+  router.push('/login');
+});
+</script>
 
 <script>
 export default {
