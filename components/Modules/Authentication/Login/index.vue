@@ -110,7 +110,7 @@ const password = ref('');
 const error = ref('');
 const message = ref('');
 const loading = ref(false);
-
+const token = localStorage.getItem('token')
 const handleLogin = async () => {
 
     console.log('Login started');
@@ -126,7 +126,10 @@ const handleLogin = async () => {
         email: email.value,
         password: password.value,
         deviceId: getDeviceId(),
-      }
+      },
+      headers: {
+      Authorization: `Bearer ${token}`,
+      },
     });
 
 console.log('Login response:', res);
@@ -146,6 +149,7 @@ console.log('Login response:', res);
         router.push('/dashboard');
         // router.push('/student/dashboard');
       }
+      
     } else {
       console.log('Invalid response format:', res); 
       error.value = res?.message || 'Login failed.';
