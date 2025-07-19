@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
   const decoded = verifyToken(token)
 
   if (!decoded) {
-    return sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthorized: Invalid token' }))
+    return sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthorized: Invalid token middleware/auth.ts' }))
   }
 
   event.context.auth = decoded

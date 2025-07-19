@@ -110,7 +110,7 @@ const password = ref('');
 const error = ref('');
 const message = ref('');
 const loading = ref(false);
-const token = localStorage.getItem('token')
+const token = localStorage.getItem('token');
 const handleLogin = async () => {
 
     console.log('Login started');
@@ -118,6 +118,11 @@ const handleLogin = async () => {
   error.value = '';
   message.value = '';
   loading.value = true;
+
+// if (!token) {
+//     error.value = 'Token missing. Please login again modules/authentication/login/index.vue.';
+//     return;
+//   }
 
   try {
     const res = await $fetch<LoginResponse>('/api/auth/login', {

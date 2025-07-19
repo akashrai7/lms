@@ -42,15 +42,21 @@ export default defineNuxtConfig({
       isCustomElement: (tag) => tag.toLowerCase() === "script",
     },
   },
-
   nitro: {
-      preset: "vercel",
+        prerender: {
+      crawlLinks: true,
+      routes: ['/authentication/login', '/authentication/register'],
+    },
+       preset: "vercel",
     },
   runtimeConfig: {
         MONGO_URI: process.env.MONGO_URI,
+        jwtSecret: process.env.JWT_SECRET || 'defaultSecretKey', // for server-side
+        public: {}, // for client-side if needed
       },
-    
+   
   pages: true,
   components: true,
   compatibilityDate: "2025-01-31",
 });
+

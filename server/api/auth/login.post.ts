@@ -42,6 +42,14 @@ export default defineEventHandler(async (e) => {
     regId: user.registrationId,
   });
 
+ setCookie(e, 'token', token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    path: '/',
+    maxAge: 60 * 60 * 24, // 1 day
+  });
+
   return {
     status: 200,
     message: 'Login successful',
