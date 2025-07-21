@@ -110,7 +110,7 @@ const password = ref('');
 const error = ref('');
 const message = ref('');
 const loading = ref(false);
-const token = localStorage.getItem('token');
+
 const handleLogin = async () => {
 
     console.log('Login started');
@@ -119,11 +119,6 @@ const handleLogin = async () => {
   message.value = '';
   loading.value = true;
 
-// if (!token) {
-//     error.value = 'Token missing. Please login again modules/authentication/login/index.vue.';
-//     return;
-//   }
-
   try {
     const res = await $fetch<LoginResponse>('/api/auth/login', {
       method: 'POST',
@@ -131,10 +126,7 @@ const handleLogin = async () => {
         email: email.value,
         password: password.value,
         deviceId: getDeviceId(),
-      },
-      headers: {
-      Authorization: `Bearer ${token}`,
-      },
+      }
     });
 
 console.log('Login response:', res);
@@ -143,6 +135,8 @@ console.log('Login response:', res);
       localStorage.setItem('token', res.token);
       message.value = 'Login successful';
 
+      useCookie('token').value = res.token;
+      
       const role = res.user.role;
 
       if (role === 'admin') {
@@ -154,7 +148,6 @@ console.log('Login response:', res);
         router.push('/dashboard');
         // router.push('/student/dashboard');
       }
-      
     } else {
       console.log('Invalid response format:', res); 
       error.value = res?.message || 'Login failed.';

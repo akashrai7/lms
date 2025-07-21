@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LayoutPreloader v-if="isLoading" />
+    <!-- <LayoutPreloader v-if="isLoading" /> -->
     <LayoutLeftSidebar v-if="shouldShowSidebar" />
     <div class="container-fluid">
       <div

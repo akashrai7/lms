@@ -1,45 +1,38 @@
-import { getCookie, H3Event, createError } from 'h3';
-import jwt from 'jsonwebtoken';
-
+import { H3Event, createError, sendError, getCookie  } from 'h3';
+import { verifyToken } from '@/server/utils/auth';
 
 export default defineEventHandler(async (event: H3Event) => {
- 
-  const url = event.node.req.url || '';
-
-  // ✅ Apply only on API routes
-  if (!url.startsWith('/api/')) return;
-  
   const publicRoutes = [
-    '/api/auth/login',
     '/api/auth/register',
+    '/api/auth/login',
     '/api/auth/forget-password',
     '/api/auth/reset-password',
+    '/api/auth/logout',
+    '/authentication/register',
+    '/authentication/login',
+    '/authentication/forget-password',
+    '/authentication/reset-password'
   ];
 
+  const currentUrl = event.node.req.url || '';
+
+  // If route is public, skip token verification
+  if (publicRoutes.some(route => currentUrl.startsWith(route))) {
+    return;
+  }
+
+  const token = getCookie(event, 'token');
   
-  if (publicRoutes.some(route => url.startsWith(route))) return;
+ if (!token) {
+    return sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthorized: No token provided' }));
+  }
+  //  const token = authHeader.split(' ')[1];
+   const decoded = verifyToken(token);
 
-  const config = useRuntimeConfig();
-  const secret = config.jwtSecret;
-
-  const token =
-    getCookie(event, 'token') ||
-    event.headers.get('authorization')?.replace('Bearer ', '');
-
-  if (!token) {
-    throw createError({
-      statusCode: 401,
-      statusMessage: 'Unauthorized: No token provided, server/middleware/auth.ts',
-    });
+  if (!decoded) {
+    return sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthorized: Invalid token' }));
   }
 
-  try {
-    const decoded = jwt.verify(token, secret);
-    event.context.user = decoded;
-  } catch (err) {
-    throw createError({
-      statusCode: 401,
-      statusMessage: 'Unauthorized: Invalid token',
-    });
-  }
+  // Attach user info to event
+  event.context.auth = decoded;
 });

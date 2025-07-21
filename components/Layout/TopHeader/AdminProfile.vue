@@ -48,7 +48,7 @@
             <span class="ms-2">My Profile</span>
           </NuxtLink>
         </li>
-        <li>
+        <!-- <li>
           <NuxtLink
             class="dropdown-item d-flex align-items-center text-body"
             to="/apps/chat"
@@ -56,8 +56,8 @@
             <i class="material-symbols-outlined">chat</i>
             <span class="ms-2">Messages</span>
           </NuxtLink>
-        </li>
-        <li>
+        </li> -->
+        <!-- <li>
           <NuxtLink
             class="dropdown-item d-flex align-items-center text-body"
             to="/apps/to-do-list"
@@ -65,8 +65,8 @@
             <i class="material-symbols-outlined">format_list_bulleted </i>
             <span class="ms-2">My Task</span>
           </NuxtLink>
-        </li>
-        <li>
+        </li> -->
+        <!-- <li>
           <NuxtLink
             class="dropdown-item d-flex align-items-center text-body"
             to="/my-profile"
@@ -74,11 +74,11 @@
             <i class="material-symbols-outlined">credit_card </i>
             <span class="ms-2">Billing</span>
           </NuxtLink>
-        </li>
+        </li> -->
       </ul>
 
       <ul class="admin-link ps-0 mb-0 list-unstyled">
-        <li>
+        <!-- <li>
           <NuxtLink
             class="dropdown-item d-flex align-items-center text-body"
             to="/social/settings"
@@ -86,9 +86,9 @@
             <i class="material-symbols-outlined">settings </i>
             <span class="ms-2">Settings</span>
           </NuxtLink>
-        </li>
+        </li> -->
 
-        <li>
+        <!-- <li>
           <NuxtLink
             class="dropdown-item d-flex align-items-center text-body"
             to="/help-desk/tickets"
@@ -96,9 +96,9 @@
             <i class="material-symbols-outlined">support</i>
             <span class="ms-2">Support</span>
           </NuxtLink>
-        </li>
+        </li> -->
 
-        <li>
+        <!-- <li>
           <NuxtLink
             class="dropdown-item d-flex align-items-center text-body"
             to="/authentication/lock-screen"
@@ -106,21 +106,40 @@
             <i class="material-symbols-outlined">lock</i>
             <span class="ms-2">Lock Screen</span>
           </NuxtLink>
-        </li>
+        </li> -->
 
         <li>
-          <NuxtLink
+          <!-- <NuxtLink
             class="dropdown-item d-flex align-items-center text-body"
             to="/authentication/login"
           >
             <i class="material-symbols-outlined">logout</i>
             <span class="ms-2">Logout</span>
-          </NuxtLink>
+          </NuxtLink> -->
+          <button @click="logout" class="dropdown-item d-flex align-items-center text-body">
+            <i class="material-symbols-outlined">logout</i>
+            <span class="ms-2">Logout</span>
+  </button>
         </li>
       </ul>
     </div>
   </div>
 </template>
+
+<!-- <script setup lang="ts">
+const router = useRouter();
+
+const logout = async () => {
+  try {
+    await $fetch('/api/auth/logout', { method: 'POST' });
+    // Redirect to login page
+    
+    router.push('/authentication/login');
+  } catch (err) {
+    console.error('Logout error:', err);
+  }
+};
+</script> -->
 
 <script>
 export default {

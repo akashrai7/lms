@@ -40,9 +40,9 @@
             <li>
               <LayoutTopHeaderSearchFrom />
             </li>
-            <li>
+            <!-- <li>
               <LayoutTopHeaderWebApps />
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -55,15 +55,13 @@
             <li class="header-right-item">
               <LayoutTopHeaderDarkSwtichBtn />
             </li>
-            <li class="header-right-item">
-              <LayoutTopHeaderLanguageMenu />
-            </li>
+            
             <li class="header-right-item">
               <LayoutTopHeaderToggleFullscreenBtn />
             </li>
-            <li class="header-right-item">
+            <!-- <li class="header-right-item">
               <LayoutTopHeaderNotificationsLists />
-            </li>
+            </li> -->
             <li class="header-right-item">
               <LayoutTopHeaderAdminProfile />
             </li>

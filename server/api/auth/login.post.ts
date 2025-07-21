@@ -42,13 +42,21 @@ export default defineEventHandler(async (e) => {
     regId: user.registrationId,
   });
 
- setCookie(e, 'token', token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
-    path: '/',
-    maxAge: 60 * 60 * 24, // 1 day
-  });
+  // setCookie(e, 'token', token, {
+  //   httpOnly: true,
+  //   secure: process.env.NODE_ENV === 'production',
+  //   sameSite: 'strict',
+  //   path: '/',
+  //   maxAge: 60 * 60 * 24, // 1 day
+  // });
+  
+setCookie(e, 'token', token, {
+  httpOnly: true,
+  secure: true,
+  sameSite: 'lax',
+  path: '/',
+  maxAge: 60 * 60 * 24 * 7 // 7 days
+})
 
   return {
     status: 200,
