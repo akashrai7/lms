@@ -35,8 +35,7 @@ export default defineNuxtConfig({
     "~/plugins/vue-quill.js",
     "~/plugins/bootstrap.client.ts",
   ],
-  modules: ["@bootstrap-vue-next/nuxt", "nuxt-swiper", "nuxt-feather-icons"],
-
+  modules: ["@bootstrap-vue-next/nuxt", "nuxt-swiper", "nuxt-feather-icons", "@pinia/nuxt", ],
   vue: {
     compilerOptions: {
       isCustomElement: (tag) => tag.toLowerCase() === "script",
@@ -48,8 +47,9 @@ export default defineNuxtConfig({
     },
   runtimeConfig: {
         MONGO_URI: process.env.MONGO_URI,
+        // JWT_SECRET: process.env.JWT_SECRET,
       },
-    
+ 
   pages: true,
   components: true,
   compatibilityDate: "2025-01-31",

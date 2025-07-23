@@ -1,3 +1,4 @@
+<!--  layouts/default.vue -->
 <template>
   <div>
     <!-- <LayoutPreloader v-if="isLoading" /> -->
@@ -33,9 +34,11 @@
 import { defineComponent, ref, onMounted, watchEffect, computed } from "vue";
 import { useRoute } from "vue-router";
 import stateStore from "~/utils/store";
+import { useUserStore } from "~/stores/user";
+import { useFetch } from "#app";
 
 export default defineComponent({
-  setup() {
+ async setup() {
     const isLoading = ref(true);
     const route = useRoute();
 
@@ -54,21 +57,34 @@ export default defineComponent({
       "/authentication/confirm-mail",
     ];
 
-    const shouldShowSidebar = computed(
-      () => !hiddenRoutes.includes(route.path)
-    );
-    const shouldShowPaddingZero = computed(() =>
-      hiddenRoutes.includes(route.path)
-    );
+    const shouldShowSidebar = computed(() => !hiddenRoutes.includes(route.path));
+    const shouldShowPaddingZero = computed(() => hiddenRoutes.includes(route.path));
     const shouldShowHeader = computed(() => !hiddenRoutes.includes(route.path));
     const shouldShowDiv = computed(() => !hiddenRoutes.includes(route.path));
     const shouldShowFooter = computed(() => !hiddenRoutes.includes(route.path));
+    const userStore = useUserStore();
+    // const token = localStorage.getItem('token');
+    const token = useCookie('token').value;
+    console.log("Default TOKEN:", token);
+    type DashboardResponse =
+  | { status: true; user: any }
+  | { status: false; message: string };
 
-    onMounted(() => {
-      setTimeout(() => {
-        isLoading.value = false;
-      }, 1000);
+   useAsyncData("fetch-user", async () => {
+  if (token && !userStore.user) {
+    const res = await $fetch<DashboardResponse>("/api/dashboard", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
 
+    if (res.status && 'user' in res) {
+      userStore.setUser(res.user);
+    }
+  }
+});
+    
+    onMounted(async () => {
+
+      // sidebar toggle logic
       watchEffect(() => {
         if (stateStore.open) {
           document.body.classList.remove("sidebar-show");
@@ -78,8 +94,13 @@ export default defineComponent({
           document.body.classList.add("sidebar-show");
         }
       });
+
+      setTimeout(() => {
+        isLoading.value = false;
+      }, 1000);
     });
 
+    // return userStore or user if needed in template
     return {
       isLoading,
       shouldShowSidebar,
@@ -87,10 +108,12 @@ export default defineComponent({
       shouldShowHeader,
       shouldShowDiv,
       shouldShowFooter,
+      userStore,
     };
   },
 });
 </script>
+
 
 <style lang="scss" scoped>
 .padding-0 {

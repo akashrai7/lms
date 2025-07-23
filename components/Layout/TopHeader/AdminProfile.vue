@@ -126,7 +126,13 @@
   </div>
 </template>
 
-<!-- <script setup lang="ts">
+<script lang="ts">
+export default {
+  name: "AdminProfile",
+};
+</script>
+
+<script setup lang="ts">
 const router = useRouter();
 
 const logout = async () => {
@@ -139,10 +145,6 @@ const logout = async () => {
     console.error('Logout error:', err);
   }
 };
-</script> -->
-
-<script>
-export default {
-  name: "AdminProfile",
-};
 </script>
+
+

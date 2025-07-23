@@ -8,9 +8,10 @@ export function generateToken(payload: any): string {
 
 export function verifyToken(token: string): any {
   try {
-    return jwt.verify(token, JWT_SECRET);
-  } catch {
-    return null;
+     const decoded = jwt.verify(token, JWT_SECRET)
+    return decoded
+  } catch (error) {
+    throw new Error('Invalid or expired token')
   }
 }
 

@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useUserStore } from '~/stores/user';
+
+const userStore = useUserStore();
+</script>
+
 <template>
   <div
     class="card bg-primary border-0 rounded-3 welcome-box style-two mb-4 position-relative"
@@ -5,7 +11,10 @@
     <div class="card-body py-38 px-4">
       <div class="mb-5">
         <h3 class="text-white fw-semibold">
-          Welcome Back, <span class="text-danger-div">Olivia!</span>
+          Welcome Back,
+          <span class="text-danger-div">
+            {{ userStore.user?.firstName }} | {{ userStore.user?.email }}!
+          </span>
         </h3>
         <p class="text-light">Your progress this week is Awesome.</p>
       </div>
@@ -39,11 +48,3 @@
     />
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "WelcomeDashboard",
-});
-</script>
