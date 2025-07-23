@@ -140,12 +140,13 @@ console.log('Login response:', res);
       const role = res.user.role;
 
       if (role === 'admin') {
-        router.push('/admin/dashboard');
+        return navigateTo('/dashboard/admin')
+       // router.push('/admin/dashboard');
       } else if (role === 'teacher') {
-        router.push('/dashboard');
+        return navigateTo('/dashboard/teacher')
       //  router.push('/teacher/dashboard');
       } else {
-        router.push('/dashboard');
+         return navigateTo('/dashboard')
         // router.push('/student/dashboard');
       }
     } else {

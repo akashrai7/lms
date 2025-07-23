@@ -64,41 +64,52 @@ export default defineComponent({
     const shouldShowFooter = computed(() => !hiddenRoutes.includes(route.path));
     const userStore = useUserStore();
     // const token = localStorage.getItem('token');
-    const token = useCookie('token').value;
-    console.log("Default TOKEN:", token);
+   
     type DashboardResponse =
   | { status: true; user: any }
   | { status: false; message: string };
 
-   useAsyncData("fetch-user", async () => {
-  if (token && !userStore.user) {
-    const res = await $fetch<DashboardResponse>("/api/dashboard", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    if (res.status && 'user' in res) {
-      userStore.setUser(res.user);
-    }
-  }
-});
+onMounted(() => {
+  if (import.meta.client) {
+    const token = useCookie("token").value;
     
-    onMounted(async () => {
+    console.log("Token de:", token);
 
-      // sidebar toggle logic
-      watchEffect(() => {
-        if (stateStore.open) {
-          document.body.classList.remove("sidebar-show");
-          document.body.classList.add("sidebar-hide");
-        } else {
-          document.body.classList.remove("sidebar-hide");
-          document.body.classList.add("sidebar-show");
+    useAsyncData("fetch-user", async () => {
+      if (token && !userStore.user) {
+        const res = await $fetch<DashboardResponse>("/api/dashboard", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        console.log("Dashboard Response:", res);
+        
+
+        if (res.status) {
+          userStore.setUser(res.user)
         }
-      });
-
-      setTimeout(() => {
-        isLoading.value = false;
-      }, 1000);
+        
+      }
     });
+  }
+
+  // Sidebar toggle logic
+  watchEffect(() => {
+    if (stateStore.open) {
+      document.body.classList.remove("sidebar-show");
+      document.body.classList.add("sidebar-hide");
+    } else {
+      document.body.classList.remove("sidebar-hide");
+      document.body.classList.add("sidebar-show");
+    }
+  });
+
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 1000);
+});
+
+
+ console.log("DEFAULT LAYOUT: userStore.user", userStore.user);
+
 
     // return userStore or user if needed in template
     return {
