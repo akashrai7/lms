@@ -1,12 +1,12 @@
 <template>
  <div class="main-content-container overflow-hidden">
-    <CommonPageTitle pageTitle="Type of Institute" subTitle="LMS" />
+    <CommonPageTitle pageTitle="Affiliation Board" subTitle="LMS" />
   <div class="row justify-content-center">
     <!-- Form Section -->
     <div class="col-xxl-4 col-md-4">
       <div class="card bg-white border-0 rounded-3 mb-4">
         <div class="card-body p-4">
-          <h5 class="mb-3 border-bottom pb-2">{{ isEdit ? 'Edit Institute Type' : 'Add New Institute Type' }}</h5>
+          <h5 class="mb-3 border-bottom pb-2">{{ isEdit ? 'Edit Affiliation Board' : 'Add New Affiliation Board' }}</h5>
           
            <!-- Alert Message -->
           <div v-if="alertMessage" :class="['alert', alertClass]" role="alert">
@@ -16,12 +16,12 @@
           <form @submit.prevent="handleSubmit">
             <!-- Name Field -->
             <div class="mb-3">
-              <label class="form-label">Institute Type Name</label>
+              <label class="form-label">Affiliation Board Name</label>
               <input
                 v-model="form.name"
                 type="text"
                 class="form-control"
-                placeholder="Enter institute type name"
+                placeholder="Enter Affiliation Board name"
                 :class="{ 'is-invalid': formErrors.name }"
               />
               <div v-if="formErrors.name" class="invalid-feedback">
@@ -76,7 +76,7 @@
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Name</th>
+                  <th>Board Name</th>
                   <th>Add By</th>
                   <th class="text-end">Action</th>
                 </tr>
@@ -126,9 +126,9 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from "vue";
-import type { InstituteType } from '~/types/institute-type';
+import type { AffiliationBoard } from '~/types/affiliation-board';
 
-const instituteTypes = ref<InstituteType[]>([]);
+const affiliationBoard = ref<AffiliationBoard[]>([]);
 const loading = ref(false);
 const searchTerm = ref("");
 const itemsPerPage = ref(10);
@@ -145,24 +145,24 @@ const showAlert = (message: string, type = "success") => {
   setTimeout(() => (alertMessage.value = ""), 3000);
 };
 /* ------------ Fetch Data ------------ */
-const fetchInstituteTypes = async () => {
+const fetchAffiliationBoard = async () => {
   loading.value = true;
   try {
-    const res = await $fetch('/api/institute-type', { credentials: 'include' });
-    instituteTypes.value = res.data || [];
+    const res = await $fetch('/api/affiliation-board', { credentials: 'include' });
+    affiliationBoard.value = res.data || [];
   } catch (error) {
     console.error('Fetch error:', error);
     showAlert("Failed to fetch data", "danger");
-    instituteTypes.value = [];
+    affiliationBoard.value = [];
   } finally {
     loading.value = false;
   }
 };
-onMounted(() => fetchInstituteTypes());
+onMounted(() => fetchAffiliationBoard());
 
 /* ------------ Search + Pagination ------------ */
 const filteredItems = computed(() =>
-  instituteTypes.value.filter(item =>
+  affiliationBoard.value.filter(item =>
     item.name.toLowerCase().includes(searchTerm.value.toLowerCase())
   )
 );
@@ -202,33 +202,33 @@ const handleSubmit = async () => {
   loading.value = true;
   try {
     if (isEdit.value && form.value.id) {
-      await $fetch(`/api/institute-type/${form.value.id}`, {
+      await $fetch(`/api/affiliation-board/${form.value.id}`, {
         method: "PUT",
         body: { name: form.value.name },
         credentials: "include",
       });
-       showAlert("Institute Type updated successfully!", "success");
+       showAlert("Affiliation Board updated successfully!", "success");
     } else {
-      await $fetch("/api/institute-type/add", {
+      await $fetch("/api/affiliation-board/add", {
         method: "POST",
         body: { name: form.value.name },
         credentials: "include",
         headers: { Authorization: `Bearer ${token}` },
       });
-      showAlert("Institute Type added successfully!", "success");
+      showAlert("Affiliation Board added successfully!", "success");
     }
     resetForm();
-    fetchInstituteTypes();
+    fetchAffiliationBoard();
   } catch (error) {
     console.error("Save Error:", error);
-    showAlert("Failed to save Institute Type", "danger");
+    showAlert("Failed to save Affiliation Board", "danger");
   } finally {
     loading.value = false;
   }
 };
 
 /* ------------ Edit ------------ */
-const editInstitute = (item: InstituteType) => {
+const editInstitute = (item: AffiliationBoard) => {
   isEdit.value = true;
   form.value = { name: item.name, id: item._id };
 };
@@ -238,13 +238,13 @@ const deleteInstitute = async (id: string) => {
   if (!confirm("Are you sure you want to delete this record?")) return;
   loading.value = true;
   try {
-    await $fetch(`/api/institute-type/${id}`, {
+    await $fetch(`/api/affiliation-board/${id}`, {
       method: "DELETE",
       credentials: "include",
       headers: { Authorization: `Bearer ${token}` },
     });
     showAlert("Deleted successfully!", "warning");
-    fetchInstituteTypes();
+    fetchAffiliationBoard();
   } catch (error) {
     console.error("Delete Error:", error);
     showAlert("Failed to delete", "danger");

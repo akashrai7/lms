@@ -74,10 +74,7 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted, computed } from "vue";
 
-import image1 from "~/assets/images/user-13.jpg";
-import image2 from "~/assets/images/user-16.jpg";
-import image3 from "~/assets/images/user-17.jpg";
-import image4 from "~/assets/images/user-18.jpg";
+
 
 export default defineComponent({
   name: "instituteType",

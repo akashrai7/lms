@@ -191,6 +191,11 @@
                 Institute type
               </NuxtLink>
             </li>
+             <li class="menu-item">
+              <NuxtLink to="/lms/affiliation-board" class="menu-link">
+                Affiliation Board
+              </NuxtLink>
+            </li>
             <li class="menu-item">
               <NuxtLink to="/lms/courses-list" class="menu-link">
                 Courses List
