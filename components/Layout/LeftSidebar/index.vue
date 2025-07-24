@@ -187,6 +187,11 @@
 
           <ul class="menu-sub" v-show="isOpen('lms')">
             <li class="menu-item">
+              <NuxtLink to="/lms/instituteType" class="menu-link">
+                Institute type
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
               <NuxtLink to="/lms/courses-list" class="menu-link">
                 Courses List
               </NuxtLink>
