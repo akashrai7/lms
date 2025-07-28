@@ -40,7 +40,7 @@
           </ul>
         </li>
 
-        <li class="menu-item" :class="{ open: isOpen('front-pages') }">
+        <!-- <li class="menu-item" :class="{ open: isOpen('front-pages') }">
           <a
             href="javascript:void(0);"
             class="menu-link menu-toggle active"
@@ -66,9 +66,9 @@
               <NuxtLink to="/contact" class="menu-link"> Contact </NuxtLink>
             </li>
           </ul>
-        </li>
+        </li> -->
 
-        <li class="menu-title small text-uppercase">
+        <!-- <li class="menu-title small text-uppercase">
           <span class="menu-title-text">APPS</span>
         </li>
 
@@ -86,7 +86,7 @@
             </span>
             <span class="title">To Do List</span>
           </NuxtLink>
-        </li>
+        </li> -->
 
         <!-- <li class="menu-item">
           <NuxtLink to="/apps/contacts" class="menu-link">
@@ -169,67 +169,13 @@
         </li> -->
 
 
-        <li class="menu-title small text-uppercase">
+        <!-- <li class="menu-title small text-uppercase">
           <span class="menu-title-text">PAGES</span>
         </li>
 
-        <li class="menu-item" :class="{ open: isOpen('lms') }">
-          <a
-            href="javascript:void(0);"
-            class="menu-link menu-toggle active"
-            @click="toggleMenu('lms')"
-          >
-            <span class="material-symbols-outlined menu-icon">
-              auto_stories
-            </span>
-            <span class="title">LMS</span>
-          </a>
+       
 
-          <ul class="menu-sub" v-show="isOpen('lms')">
-            <li class="menu-item">
-              <NuxtLink to="/lms/instituteType" class="menu-link">
-                Institute type
-              </NuxtLink>
-            </li>
-             <li class="menu-item">
-              <NuxtLink to="/lms/affiliation-board" class="menu-link">
-                Affiliation Board
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/lms/courses-list" class="menu-link">
-                Courses List
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/lms/course-details" class="menu-link">
-                Course Details
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/lms/lesson-preview" class="menu-link">
-                Lesson Preview
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/lms/create-course" class="menu-link">
-                Create Course
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/lms/edit-course" class="menu-link">
-                Edit Course
-              </NuxtLink>
-            </li>
-            <li class="menu-item">
-              <NuxtLink to="/lms/instructors" class="menu-link">
-                Instructors
-              </NuxtLink>
-            </li>
-          </ul>
-        </li>
-
-        <!-- <li class="menu-item" :class="{ open: isOpen('helpDesk') }">
+         <li class="menu-item" :class="{ open: isOpen('helpDesk') }">
           <a
             href="javascript:void(0);"
             class="menu-link menu-toggle active"
@@ -261,7 +207,7 @@
               </NuxtLink>
             </li>
           </ul>
-        </li> -->
+        </li> 
 
      
         <li class="menu-item" :class="{ open: isOpen('invoice') }">
@@ -356,8 +302,8 @@
               </NuxtLink>
             </li>
           </ul>
-        </li>
-
+        </li> -->
+<!-- 
         
 
         <li class="menu-title small text-uppercase">
@@ -774,12 +720,114 @@
             <span class="material-symbols-outlined menu-icon">group</span>
             <span class="title">Members</span>
           </NuxtLink>
+        </li>-->
+        <li class="menu-title small text-uppercase">
+          <span class="menu-title-text">SETTINGS</span>
+        </li> 
+         <li class="menu-item" :class="{ open: isOpen('lms') }">
+          <a
+            href="javascript:void(0);"
+            class="menu-link menu-toggle active"
+            @click="toggleMenu('lms')"
+          >
+            <span class="material-symbols-outlined menu-icon">
+              auto_stories
+            </span>
+            <span class="title">LMS</span>
+          </a>
+
+          <ul class="menu-sub" v-show="isOpen('lms')">
+            <li class="menu-item">
+              <NuxtLink to="/lms/instituteType" class="menu-link">
+                Institute type
+              </NuxtLink>
+            </li>
+             <li class="menu-item">
+              <NuxtLink to="/lms/affiliation-board" class="menu-link">
+                Affiliation Board
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
+              <NuxtLink to="/lms/training-mode" class="menu-link">
+                Training Mode 
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
+              <NuxtLink to="/lms/language" class="menu-link">
+                Language
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
+              <NuxtLink to="/lms/gender" class="menu-link">
+                Gender
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
+              <NuxtLink to="/lms/nationality" class="menu-link">
+                Nationality
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
+              <NuxtLink to="/lms/class" class="menu-link">
+                Class
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
+              <NuxtLink to="/lms/stream" class="menu-link">
+                Stream 
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
+              <NuxtLink to="/lms/section " class="menu-link">
+                Section 
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
+              <NuxtLink to="/lms/blood-group " class="menu-link">
+                Blood Group 
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
+              <NuxtLink to="/lms/category " class="menu-link">
+                Category
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
+              <NuxtLink to="/lms/courses-list" class="menu-link">
+                Courses List
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
+              <NuxtLink to="/lms/course-details" class="menu-link">
+                Course Details
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
+              <NuxtLink to="/lms/lesson-preview" class="menu-link">
+                Lesson Preview
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
+              <NuxtLink to="/lms/create-course" class="menu-link">
+                Create Course
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
+              <NuxtLink to="/lms/edit-course" class="menu-link">
+                Edit Course
+              </NuxtLink>
+            </li>
+            <li class="menu-item">
+              <NuxtLink to="/lms/instructors" class="menu-link">
+                Instructors
+              </NuxtLink>
+            </li>
+          </ul>
         </li>
 
         <li class="menu-title small text-uppercase">
           <span class="menu-title-text">OTHERS</span>
-        </li>
-
+        </li> 
         <li class="menu-item">
           <NuxtLink to="/my-profile" class="menu-link">
             <span class="material-symbols-outlined menu-icon">
@@ -832,6 +880,7 @@
             <span class="material-symbols-outlined menu-icon">logout</span>
             <span class="title">Logout</span>
           </NuxtLink>
+          <button @click="onLogout" class="material-symbols-outlined menu-icon">Logout</button>
         </li>
 
         <!-- <li class="menu-item" :class="{ open: isOpen('multiLevelMenu') }">
@@ -871,34 +920,27 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import stateStore from "~/utils/store";
+import { useLogout } from "@/composables/useLogout";
 
-export default defineComponent({
-  name: "LeftSidebar",
-  setup() {
-    const stateStoreInstance = stateStore;
+const { logout } = useLogout();
 
-    // Reactive state to track which menu items are open
-    const openMenu = ref(null);
+// Logout handler
+const onLogout = () => logout();
 
-    // Method to toggle the menu items
-    const toggleMenu = (menu) => {
-      // If the same menu is clicked, toggle it; otherwise, open the clicked menu
-      openMenu.value = openMenu.value === menu ? null : menu;
-    };
+// State store instance
+const stateStoreInstance = stateStore;
 
-    // Method to check if a menu is open
-    const isOpen = (menu) => {
-      return openMenu.value === menu;
-    };
+// Reactive state to track which menu items are open
+const openMenu = ref<string | null>(null);
 
-    return {
-      stateStoreInstance,
-      toggleMenu,
-      isOpen,
-    };
-  },
-});
+// Method to toggle the menu items
+const toggleMenu = (menu: string) => {
+  openMenu.value = openMenu.value === menu ? null : menu;
+};
+
+// Method to check if a menu is open
+const isOpen = (menu: string) => openMenu.value === menu;
 </script>

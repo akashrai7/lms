@@ -31,6 +31,7 @@
                 type="email"
                 class="form-control h-55"
                 placeholder="Enter Your Email Id"
+                autocomplete="username"
               />
             </div>
             <div class="form-group mb-4">
@@ -40,6 +41,7 @@
                 type="password"
                 class="form-control h-55"
                 placeholder="Enter Your Password"
+                autocomplete="current-password"
               />
             </div>
             <div class="form-group mb-4">
@@ -113,7 +115,7 @@ const loading = ref(false);
 
 const handleLogin = async () => {
 
-    console.log('Login started');
+  //  console.log('Login started');
 
   error.value = '';
   message.value = '';
@@ -129,26 +131,24 @@ const handleLogin = async () => {
       }
     });
 
-console.log('Login response:', res);
+   //   localStorage.setItem('token', res.token);
+   // console.log('Login response:', res);
 
-    if (res.status === 200 && 'token' in res) {
+    if (res.status === 200) {
       localStorage.setItem('token', res.token);
-      message.value = 'Login successful';
+      message.value = 'Login successful.';
+    
+   //   useCookie('token').value = res.token;
+    //  useCookie('role').value = res.user.role;
+    //  useCookie('registrationId').value = res.user.registrationId;
 
-      useCookie('token').value = res.token;
-      
+
       const role = res.user.role;
+  if (role === 'admin') navigateTo('/dashboard/admin');
+  else if (role === 'teacher') navigateTo('/dashboard/teacher');
+  else navigateTo('/dashboard');
 
-      if (role === 'admin') {
-        return navigateTo('/dashboard/admin')
-       // router.push('/admin/dashboard');
-      } else if (role === 'teacher') {
-        return navigateTo('/dashboard/teacher')
-      //  router.push('/teacher/dashboard');
-      } else {
-         return navigateTo('/dashboard')
-        // router.push('/student/dashboard');
-      }
+
     } else {
       console.log('Invalid response format:', res); 
       error.value = res?.message || 'Login failed.';

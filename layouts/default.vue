@@ -73,7 +73,7 @@ onMounted(() => {
   if (import.meta.client) {
     const token = useCookie("token").value;
     
-    console.log("Token de:", token);
+  //  console.log("Token de:", token);
 
     useAsyncData("fetch-user", async () => {
       if (token && !userStore.user) {

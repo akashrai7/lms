@@ -86,6 +86,7 @@
               type="text"
                 class="form-control"
                 placeholder="Enter your last name"
+                autocomplete="name"
               />
             </div>
             <div class="form-group mb-3">
@@ -95,6 +96,7 @@
                 type="text"
                 class="form-control"
                 placeholder="Enter your mobile number"
+                autocomplete="tel"
               />
             </div>
             <div class="form-group mb-3">
@@ -104,6 +106,7 @@
                 type="email"
                 class="form-control"
                 placeholder="Enter your email address"
+                autocomplete="off"
               />
             </div>
             <div class="form-group mb-3">
@@ -129,6 +132,7 @@
                 type="password"
                 class="form-control"
                 placeholder="Type password"
+                autocomplete="new-password"
               />
             </div>
             <div class="form-group mb-3">
