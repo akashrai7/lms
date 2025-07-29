@@ -33,8 +33,8 @@
           />
         </div>
         <div class="flex-grow-1 ms-2">
-          <h3 class="fw-medium">William John</h3>
-          <span class="fs-12">Marketing Manager</span>
+          <h3 class="fw-medium"> {{ user?.firstName }} {{ user?.lastName }}</h3>
+          <span class="fs-12">{{ user?.role }}</span>
         </div>
       </div>
 
@@ -109,13 +109,6 @@
         </li> -->
 
         <li>
-          <!-- <NuxtLink
-            class="dropdown-item d-flex align-items-center text-body"
-            to="/authentication/login"
-          >
-            <i class="material-symbols-outlined">logout</i>
-            <span class="ms-2">Logout</span>
-          </NuxtLink> -->
           <button @click="logout" class="dropdown-item d-flex align-items-center text-body">
             <i class="material-symbols-outlined">logout</i>
             <span class="ms-2">Logout</span>
@@ -133,8 +126,9 @@ export default {
 </script>
 
 <script setup lang="ts">
+import { useAuth } from "@/composables/useAuth";
 const router = useRouter();
-
+ const { user } = useAuth();
 const logout = async () => {
   try {
     await $fetch('/api/auth/logout', { method: 'POST' });

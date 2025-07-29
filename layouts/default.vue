@@ -36,6 +36,7 @@ import { useRoute } from "vue-router";
 import stateStore from "~/utils/store";
 import { useUserStore } from "~/stores/user";
 import { useFetch } from "#app";
+import { useAuth } from "@/composables/useAuth";
 
 export default defineComponent({
  async setup() {
@@ -63,53 +64,12 @@ export default defineComponent({
     const shouldShowDiv = computed(() => !hiddenRoutes.includes(route.path));
     const shouldShowFooter = computed(() => !hiddenRoutes.includes(route.path));
     const userStore = useUserStore();
-    // const token = localStorage.getItem('token');
-   
-    type DashboardResponse =
-  | { status: true; user: any }
-  | { status: false; message: string };
+    
+ const { fetchUser } = useAuth();
 
 onMounted(() => {
-  if (import.meta.client) {
-    const token = useCookie("token").value;
-    
-  //  console.log("Token de:", token);
-
-    useAsyncData("fetch-user", async () => {
-      if (token && !userStore.user) {
-        const res = await $fetch<DashboardResponse>("/api/dashboard", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        console.log("Dashboard Response:", res);
-        
-
-        if (res.status) {
-          userStore.setUser(res.user)
-        }
-        
-      }
-    });
-  }
-
-  // Sidebar toggle logic
-  watchEffect(() => {
-    if (stateStore.open) {
-      document.body.classList.remove("sidebar-show");
-      document.body.classList.add("sidebar-hide");
-    } else {
-      document.body.classList.remove("sidebar-hide");
-      document.body.classList.add("sidebar-show");
-    }
-  });
-
-  setTimeout(() => {
-    isLoading.value = false;
-  }, 1000);
+  fetchUser();
 });
-
-
- console.log("DEFAULT LAYOUT: userStore.user", userStore.user);
-
 
     // return userStore or user if needed in template
     return {

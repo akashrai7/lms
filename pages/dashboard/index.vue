@@ -52,10 +52,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
 
-export default defineComponent({
-  name: "LMSPage",
-});
+<script setup lang="ts">
+import { useAuth } from "@/composables/useAuth";
+
+const { user } = useAuth();
+
+import { defineComponent } from "vue";
+ defineComponent({ name: "LMSPage", });
 </script>

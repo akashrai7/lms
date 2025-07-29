@@ -1,11 +1,3 @@
-// export default defineNuxtRouteMiddleware((to, from) => {
-//   const token = process.client ? localStorage.getItem('token') : null;
-
-//   if (!token) {
-//     return navigateTo('/authentication/login');
-//   }
-// });
-// // 
 
 // middleware/auth.ts
 export default defineNuxtRouteMiddleware((to) => {
@@ -14,6 +6,7 @@ export default defineNuxtRouteMiddleware((to) => {
     '/authentication/register',
     '/authentication/forget-password',
     '/authentication/reset-password',
+    '/authentication/logout',
   ];
 
   const token = useCookie('token');

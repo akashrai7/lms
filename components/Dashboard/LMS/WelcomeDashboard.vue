@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { useUserStore } from '~/stores/user';
-
-const userStore = useUserStore();
+import { useAuth } from "@/composables/useAuth";
+const { user } = useAuth();
 </script>
 
 <template>
@@ -13,7 +12,7 @@ const userStore = useUserStore();
         <h3 class="text-white fw-semibold">
           Welcome Back,
           <span class="text-danger-div">
-            {{ userStore.user?.firstName }} | {{ userStore.user?.email }}!
+            {{ user?.firstName }} | {{ user?.registrationId }}!
           </span>
         </h3>
         <p class="text-light">Your progress this week is Awesome.</p>
@@ -48,3 +47,5 @@ const userStore = useUserStore();
     />
   </div>
 </template>
+
+

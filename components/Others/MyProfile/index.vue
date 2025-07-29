@@ -33,11 +33,11 @@
         </div>
       </div>
       <div class="col-xxl-9">
-        <OthersMyProfileProjectsAnalysisChart />
+        <!-- <OthersMyProfileProjectsAnalysisChart /> -->
 
-        <OthersMyProfileToDoList />
+        <!-- <OthersMyProfileToDoList /> -->
 
-        <OthersMyProfileRecentActivity />
+        <!-- <OthersMyProfileRecentActivity /> -->
       </div>
     </div>
   </div>

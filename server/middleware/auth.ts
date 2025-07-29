@@ -8,11 +8,15 @@ export default defineEventHandler(async (event: H3Event) => {
     '/api/auth/forget-password',
     '/api/auth/reset-password',
     '/api/auth/logout',
+    
     '/authentication/register',
     '/authentication/login',
     '/authentication/forget-password',
     '/authentication/reset-password'
   ];
+
+
+    
 
   const currentUrl = event.node.req.url || '';
 

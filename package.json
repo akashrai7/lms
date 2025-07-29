@@ -21,6 +21,7 @@
     "apexcharts": "^3.54.1",
     "bcryptjs": "^3.0.2",
     "date-fns": "^2.30.0",
+    "dayjs": "^1.11.13",
     "echarts": "^5.5.1",
     "feather-icons": "^4.29.2",
     "jsonwebtoken": "^9.0.2",

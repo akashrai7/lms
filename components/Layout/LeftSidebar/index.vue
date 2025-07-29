@@ -22,7 +22,15 @@
         <li class="menu-title small text-uppercase">
           <span class="menu-title-text">MAIN</span>
         </li>
-        <li class="menu-item" :class="{ open: isOpen('dashboard') }">
+         <li class="menu-item">
+          <NuxtLink to="/dashboard" class="menu-link">
+            <span class="material-symbols-outlined menu-icon">
+              dashboard
+            </span>
+            <span class="title">Dashboard</span>
+          </NuxtLink>
+        </li>
+        <!-- <li class="menu-item" :class="{ open: isOpen('dashboard') }">
           <a
             href="javascript:void(0);"
             class="menu-link menu-toggle active"
@@ -30,7 +38,7 @@
           >
             <span class="material-symbols-outlined menu-icon">dashboard</span>
             <span class="title">Dashboard</span>
-            <!-- <span class="count">30</span> -->
+           
           </a>
 
           <ul class="menu-sub" v-show="isOpen('dashboard')">
@@ -38,7 +46,7 @@
               <NuxtLink to="/dashboard" class="menu-link"> LMS </NuxtLink>
             </li>
           </ul>
-        </li>
+        </li> -->
 
         <!-- <li class="menu-item" :class="{ open: isOpen('front-pages') }">
           <a
@@ -876,11 +884,11 @@
           </ul>
         </li>
         <li class="menu-item">
-          <NuxtLink to="/authentication/logout" class="menu-link">
+          <NuxtLink  @click="onLogout" class="menu-link">
             <span class="material-symbols-outlined menu-icon">logout</span>
             <span class="title">Logout</span>
           </NuxtLink>
-          <button @click="onLogout" class="material-symbols-outlined menu-icon">Logout</button>
+          
         </li>
 
         <!-- <li class="menu-item" :class="{ open: isOpen('multiLevelMenu') }">
