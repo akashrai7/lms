@@ -31,7 +31,7 @@ export default defineEventHandler(async (event: H3Event) => {
     return sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthorized: No token provided' }));
   }
   //  const token = authHeader.split(' ')[1];
-   const decoded = verifyToken(token);
+   const decoded = await verifyToken(event);
 
   if (!decoded) {
     return sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthorized: Invalid token' }));

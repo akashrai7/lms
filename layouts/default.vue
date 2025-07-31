@@ -14,18 +14,18 @@
         <LayoutMainFooter v-if="shouldShowFooter" />
       </div>
     </div>
-    <LayoutCreateTaskModal />
-    <LayoutAddNewLabelModal />
-    <LayoutAddNewCardModal />
-    <LayoutAddNewFileModal />
-    <LayoutAddNewOrderModal />
-    <LayoutAddNewCategorieModal />
-    <LayoutAddNewContactModal />
-    <LayoutAddNewCustomerModal />
-    <LayoutAddNewLeadModal />
-    <LayoutAddNewDealsModal />
-    <LayoutAddNewUserModal />
-    <LayoutAddNewInstructorsModal />
+    <!-- <LayoutCreateTaskModal /> -->
+    <!-- <LayoutAddNewLabelModal /> -->
+    <!-- <LayoutAddNewCardModal /> -->
+    <!-- <LayoutAddNewFileModal /> -->
+    <!-- <LayoutAddNewOrderModal /> -->
+    <!-- <LayoutAddNewCategorieModal /> -->
+    <!-- <LayoutAddNewContactModal /> -->
+    <!-- <LayoutAddNewCustomerModal /> -->
+    <!-- <LayoutAddNewLeadModal /> -->
+    <!-- <LayoutAddNewDealsModal /> -->
+    <!-- <LayoutAddNewUserModal /> -->
+    <!-- <LayoutAddNewInstructorsModal /> -->
     <LayoutSettingsSidebar />
   </div>
 </template>

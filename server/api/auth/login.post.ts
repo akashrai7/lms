@@ -45,7 +45,7 @@ export default defineEventHandler(async (e) => {
     secure: process.env.NODE_ENV === 'production', // only HTTPS in production
     sameSite: 'strict',
     path: '/',
-    maxAge: 60 * 60 * 24, // 1 day
+    maxAge: 60 * 60 * 24, // 1  day
   });
 
   // 7. Set Role Cookie (non-HTTP-only so middleware can read it)

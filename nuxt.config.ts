@@ -34,6 +34,7 @@ export default defineNuxtConfig({
     "~/plugins/apexcharts.client.ts",
     "~/plugins/vue-quill.js",
     "~/plugins/bootstrap.client.ts",
+    "~/plugins/vue-toastification",
   ],
   modules: ["@bootstrap-vue-next/nuxt", "nuxt-swiper", "nuxt-feather-icons", "@pinia/nuxt", ],
   vue: {
