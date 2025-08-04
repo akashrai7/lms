@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!---<script setup lang="ts">
 import { reactive, onMounted } from 'vue'
 import { useOptions } from '~/composables/useOptions'
 import { useToast } from 'vue-toastification'
@@ -73,9 +73,16 @@ const fetchProfile = async () => {
 // Update profile to API
 const updateProfile = async () => {
   try {
+    const formData = new FormData()
+    for (const key in form) {
+      if (form[key] !== null) {
+        formData.append(key, form[key])
+      }
+    }
+
     const res = await $fetch('/api/user/profile', {
       method: 'PATCH',
-      body: form
+      body: formData
     })
 
     if (res?.statusCode === 200) {
@@ -88,16 +95,156 @@ const updateProfile = async () => {
   }
 }
 
+
 // On page mount, fetch user profile
 onMounted(fetchProfile)
 
 </script>
+-->
+<script setup lang="ts">
+import { reactive, onMounted } from 'vue'
+import { useOptions } from '~/composables/useOptions'
+import { useToast } from 'vue-toastification'
 
+const toast = useToast()
+
+// Options Composables
+const {
+  genderOptions,
+  bloodGroupOptions,
+  nationalityOptions,
+  categoryOptions,
+  stateOptions,
+  districtOptions,
+  fetchOptions
+} = useOptions()
+
+onMounted(fetchOptions)
+
+// Define form keys as a type-safe list
+type FormField =
+  | 'firstName'
+  | 'lastName'
+  | 'email'
+  | 'mobile'
+  | 'nationality'
+  | 'aadhaar'
+  | 'fatherName'
+  | 'motherName'
+  | 'guardianName'
+  | 'guardianContact'
+  | 'bloodGroup'
+  | 'category'
+  | 'disability'
+  | 'address'
+  | 'country'
+  | 'state'
+  | 'district'
+  | 'pinCode'
+  | 'dob'
+  | 'gender'
+
+// Define form type
+type FormType = Record<FormField, string> & { photo: File | null }
+
+// Reactive form object
+const form = reactive<FormType>({
+  firstName: '',
+  lastName: '',
+  email: '',
+  mobile: '',
+  nationality: '',
+  aadhaar: '',
+  fatherName: '',
+  motherName: '',
+  guardianName: '',
+  guardianContact: '',
+  bloodGroup: '',
+  category: '',
+  disability: '',
+  address: '',
+  country: 'India',
+  state: '',
+  district: '',
+  pinCode: '',
+  dob: '',
+  gender: '',
+  photo: null,
+})
+
+// Handle file input change
+const handleFileUpload = (e: Event) => {
+  const target = e.target as HTMLInputElement
+  if (target.files?.length) {
+    form.photo = target.files[0] ?? null
+  } else {
+    form.photo = null
+  }
+}
+
+// Fetch profile from API
+const fetchProfile = async () => {
+  try {
+    const res = await $fetch('/api/user/profile')
+    if (res?.statusCode === 200 && res?.data) {
+      Object.assign(form, res.data)
+    } else {
+      toast.error(res?.message || 'Failed to load profile')
+    }
+  } catch (err) {
+    toast.error('Error loading profile')
+  }
+}
+
+// Update profile to API
+const updateProfile = async () => {
+  try {
+    const formData = new FormData()
+
+    // Append form fields
+    const fields: FormField[] = [
+      'firstName', 'lastName', 'email', 'mobile', 'nationality',
+      'aadhaar', 'fatherName', 'motherName', 'guardianName',
+      'guardianContact', 'bloodGroup', 'category', 'disability',
+      'address', 'country', 'state', 'district', 'pinCode',
+      'dob', 'gender'
+    ]
+
+    for (const key of fields) {
+      if (form[key]) {
+        formData.append(key, form[key])
+      }
+    }
+
+    // Append photo separately
+    if (form.photo) {
+      formData.append('photo', form.photo)
+    }
+
+    const res = await $fetch('/api/user/profile', {
+      method: 'PATCH',
+      body: formData
+    })
+
+    if (res?.statusCode === 200) {
+      toast.success('Profile updated successfully')
+    } else {
+      toast.error(res?.message || 'Update failed')
+    }
+  } catch (err) {
+     console.error('Profile update error:', err) 
+    toast.error('Error updating profile')
+  }
+}
+
+onMounted(fetchProfile)
+</script>
 
 <template>
    <div class="card bg-white border-0 rounded-3 mb-4">
     <div class="card-body p-4">
-  <form class="row g-4">
+       <OthersSettingsMenu /> 
+  <form class="row g-4" @submit.prevent="updateProfile" enctype="multipart/form-data">
 
     <!-- First Name -->
     <div class="col-md-6">
@@ -205,7 +352,7 @@ onMounted(fetchProfile)
     <!-- Nationality -->
     <div class="col-md-6">
       <label class="form-label">Nationality</label>
-     <select class="form-select form-control ps-5 h-55">
+     <select class="form-select form-control ps-5 h-55" v-model="form.nationality">
   <option value="" disabled selected>Select Nationality</option>
   <option v-for="item in nationalityOptions" :key="item._id" :value="item._id">{{ item.name }}</option>
 </select>
@@ -218,7 +365,7 @@ onMounted(fetchProfile)
     <!-- Category -->
     <div class="col-md-6">
       <label class="form-label">Category</label>
-      <select class="form-select form-control ps-5 h-55">
+      <select class="form-select form-control ps-5 h-55" v-model="form.category">
   <option value="" disabled selected>Select Category</option>
   <option v-for="item in categoryOptions" :key="item._id" :value="item._id">{{ item.name }}</option>
 </select>
@@ -251,7 +398,7 @@ onMounted(fetchProfile)
     <!-- State -->
     <div class="col-md-6">
       <label class="form-label">State</label>
-       <select class="form-select form-control ps-5 h-55">
+       <select class="form-select form-control ps-5 h-55" v-model="form.state">
   <option value="" disabled selected>Select State</option>
   <option v-for="item in stateOptions" :key="item._id" :value="item._id">{{ item.name }}</option>
 </select>
@@ -262,7 +409,7 @@ onMounted(fetchProfile)
     <!-- District -->
     <div class="col-md-6">
       <label class="form-label">District</label>
-       <select class="form-select form-control ps-5 h-55">
+       <select class="form-select form-control ps-5 h-55" v-model="form.district">
   <option value="" disabled selected>Select District</option>
   <option v-for="item in districtOptions" :key="item._id" :value="item._id">{{ item.name }}</option>
 </select>
@@ -273,7 +420,7 @@ onMounted(fetchProfile)
      <!-- pincode -->
     <div class="col-md-6">
       <label class="form-label">Pin Code <span class="text-danger">*</span></label>
-      <input type="email" class="form-control" v-model="form.pinCode" />
+      <input type="text" class="form-control" v-model="form.pinCode" />
     </div>
    
     <!-- Photo Upload -->

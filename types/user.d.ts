@@ -41,6 +41,11 @@ export interface User {
   country: 'India';
   state?: string | null;
   district?: string | null;
+  schoolName: string;
+  bio: string;
+  photo: File | null;
   createdAt?: string;
   updatedAt?: string;
 }
+
+

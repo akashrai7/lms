@@ -20,7 +20,7 @@
 //   }
 // };
 
-/*
+
 // ~/server/utils/auth.ts
 import { getCookie, H3Event } from 'h3';
 import jwt from 'jsonwebtoken';
@@ -43,8 +43,8 @@ export const verifyToken = async (event: H3Event): Promise<{ _id: string } | nul
     return null;
   }
 };
-*/
 
+/*
 // ~/server/utils/auth.ts
 import { getCookie, H3Event } from 'h3';
 import jwt from 'jsonwebtoken';
@@ -68,3 +68,4 @@ export const verifyToken = async (event: H3Event): Promise<{ _id: string; role: 
     return null;
   }
 };
+*/
