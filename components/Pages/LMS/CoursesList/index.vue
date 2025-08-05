@@ -32,7 +32,7 @@
               <tr v-for="item in courses" :key="item._id">
                 <!-- <td class="text-body">{{ item._id }}</td> -->
                 <td>
-                  <NuxtLink :to="`/lms/courses/${item._id}`">
+                  <NuxtLink :to="`/lms/${item._id}`">
                     {{ item.name }}
                   </NuxtLink>
                 </td>

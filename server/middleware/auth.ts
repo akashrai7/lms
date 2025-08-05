@@ -8,11 +8,13 @@ export default defineEventHandler(async (event: H3Event) => {
     '/api/auth/forget-password',
     '/api/auth/reset-password',
     '/api/auth/logout',
-    
+    '/api/courses/[id]',
+     '/api/courses/64ff1a4a2f5a99f101a8a111',
     '/authentication/register',
     '/authentication/login',
     '/authentication/forget-password',
-    '/authentication/reset-password'
+    '/authentication/reset-password',
+    '/lms/64ff1a4a2f5a99f101a8a111'
   ];
 
 

@@ -1,11 +1,13 @@
 import { defineEventHandler, getRouterParam } from 'h3'
 import Course from '@/server/models/course.model'
 import connectDB from '@/server/utils/db'
+import mongoose from 'mongoose'
 
 export default defineEventHandler(async (event) => {
   await connectDB()
 
   const id = getRouterParam(event, 'id')
+  console.log('id',id)
   if (!id) {
     return {
       success: false,
@@ -13,9 +15,11 @@ export default defineEventHandler(async (event) => {
       course: null,
     }
   }
-
   try {
-    const course = await Course.findById(id)
+   // const course = await Course.findOne({ _id: new mongoose.Types.ObjectId(id) })
+   // const course = await Course.findOne({ _id: id })
+     const course = await Course.find();
+    console.log('course: ',course)
 
     if (!course) {
       return {
