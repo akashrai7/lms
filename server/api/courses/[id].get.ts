@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   await connectDB()
 
   const id = getRouterParam(event, 'id')
-  console.log('id',id)
+//  console.log('id',id)
   if (!id) {
     return {
       success: false,
@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
    // const course = await Course.findOne({ _id: new mongoose.Types.ObjectId(id) })
    // const course = await Course.findOne({ _id: id })
      const course = await Course.find();
-    console.log('course: ',course)
+  //  console.log('course: ',course)
 
     if (!course) {
       return {

@@ -6,8 +6,8 @@
       <h2 class="mb-3">{{ course.name }}</h2>
       <p class="mb-4">{{ course.description }}</p>
 
-      <div class="row">
-        <!-- Video List -->
+       <div class="row">
+        
         <div class="col-md-4">
           <ul class="list-group">
             <li
@@ -23,7 +23,7 @@
           </ul>
         </div>
 
-        <!-- Video Player -->
+        
         <div class="col-md-8" v-if="selectedVideo">
           <video
             class="w-100 rounded"
@@ -32,7 +32,7 @@
             :poster="selectedVideo.poster"
           ></video>
         </div>
-      </div>
+      </div> 
     </div>
 
     <div class="container py-5 text-center" v-else>
@@ -52,11 +52,15 @@ const route = useRoute()
 
 const fetchCourse = async () => {
   try {
+   
+    console.log('ids:', route.params.id)
     const res = await $fetch<{ course: Course }>(`/api/courses/${route.params.id}`, {
       credentials: 'include',
+      
     })
-    course.value = res.course
-    selectedVideo.value = res.course.videos?.[0] ?? null
+    console.log('Course-', res)
+    course.value = res.course[0] ?? null
+    selectedVideo.value = res.course[0]?.videos?.[0] ?? null
   } catch (err) {
     console.error('Failed to load course', err)
   }
