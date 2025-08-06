@@ -60,8 +60,8 @@ const fetchCourse = async () => {
       
     })
     console.log('Course-', res)
-   course.value = res.course
-    selectedVideo.value = res.course.videos?.[0] ?? null
+    course.value = res.course[0] ?? null
+    selectedVideo.value = res.course[0]?.videos?.[0] ?? null
   } catch (err) {
     console.error('Failed to load course', err)
   }
