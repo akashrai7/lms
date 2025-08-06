@@ -27,6 +27,7 @@
         <div class="col-md-8" v-if="selectedVideo">
           <video
             class="w-100 rounded"
+            controlsList="nodownload"
             controls
             :src="selectedVideo.videoUrl"
             :poster="selectedVideo.poster"
@@ -59,8 +60,8 @@ const fetchCourse = async () => {
       
     })
     console.log('Course-', res)
-    course.value = res.course[0] ?? null
-    selectedVideo.value = res.course[0]?.videos?.[0] ?? null
+   course.value = res.course
+    selectedVideo.value = res.course.videos?.[0] ?? null
   } catch (err) {
     console.error('Failed to load course', err)
   }
