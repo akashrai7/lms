@@ -10,7 +10,7 @@
             <img
               src="~/assets/images/logo.png"
               class="rounded-3 for-light-logo"
-              alt="logo"
+              alt="logo" 
             />
             <img
               src="~/assets/images/logo.png"
