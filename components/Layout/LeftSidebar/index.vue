@@ -5,7 +5,7 @@
         to="/dashboard"
         class="d-block text-decoration-none position-relative"
       >
-        <img src="~/assets/images/logo-icon.png" alt="logo-icon" />
+        <img src="~/assets/images/mono.png" alt="logo-icon" />
         <span class="logo-text fw-bold text-dark">AI GURUKL</span>
       </NuxtLink>
       <button
