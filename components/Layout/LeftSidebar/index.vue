@@ -34,7 +34,7 @@
           <span class="menu-title-text">Education</span>
          </li>
          <li class="menu-item">
-          <NuxtLink to="/dashboard" class="menu-link">
+          <NuxtLink to="/lms/courses-list" class="menu-link">
             <span class="material-symbols-outlined menu-icon">
               dashboard
             </span>
@@ -42,7 +42,7 @@
           </NuxtLink>
         </li>
          <li class="menu-item">
-          <NuxtLink to="/dashboard" class="menu-link">
+          <NuxtLink to="/lms/courses-list" class="menu-link">
             <span class="material-symbols-outlined menu-icon">
               dashboard
             </span>
