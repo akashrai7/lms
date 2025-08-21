@@ -65,9 +65,7 @@
             <li class="header-right-item">
               <LayoutTopHeaderAdminProfile />
             </li>
-            <li class="header-right-item">
-              <LayoutTopHeaderSettingsBtn />
-            </li>
+            
           </ul>
         </div>
       </div>
