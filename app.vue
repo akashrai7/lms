@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 useHead({
-  title: "Trezo - Nuxt.js Bootstrap 5 Admin Dashboard Template",
+  title: "AI GURUKL",
   meta: [{ name: "description", content: "My amazing dashboard." }],
 });
 </script>
