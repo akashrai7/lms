@@ -16,7 +16,7 @@
         <div class="d-flex align-items-center justify-content-between">
           <div class="d-none d-xxl-block">
             <div class="d-flex align-content-center">
-              <h3>Olivia</h3>
+              <h3> {{ user?.firstName }} </h3>
             </div>
           </div>
         </div>
