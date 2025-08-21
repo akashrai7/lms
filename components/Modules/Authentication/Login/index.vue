@@ -10,12 +10,12 @@
             <img
               src="~/assets/images/logo.png"
               class="rounded-3 for-light-logo"
-              alt="login"
+              alt="logo"
             />
             <img
               src="~/assets/images/logo.png"
               class="rounded-3 for-dark-logo"
-              alt="login"
+              alt="logo-2"
             />
           </div>
           <h3 class="fs-28 mb-2">Welcome back to user dashboard!</h3>
