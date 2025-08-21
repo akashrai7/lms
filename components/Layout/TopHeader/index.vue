@@ -15,12 +15,12 @@
               <NuxtLink to="/dashboard" class="d-block text-decoration-none">
                 <img
                   class="logo-black"
-                  src="@/assets/images/logo.svg"
+                  src="@/assets/images/mono.png"
                   alt="logo-icon"
                 />
                 <img
                   class="logo-white"
-                  src="@/assets/images/logo-white.svg"
+                  src="@/assets/images/mono.png"
                   alt="logo-icon"
                 />
               </NuxtLink>
