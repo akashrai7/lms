@@ -16,30 +16,9 @@
         Change Password
       </NuxtLink>
     </li>
-    <li>
-      <NuxtLink
-        to="/settings/connections"
-        class="btn btn-primary border border-primary bg-transparent text-primary py-2 px-3 fw-semibold"
-      >
-        Connections
-      </NuxtLink>
-    </li>
-    <li>
-      <NuxtLink
-        to="/settings/privacy-policy"
-        class="btn btn-primary border border-primary bg-transparent text-primary py-2 px-3 fw-semibold"
-      >
-        Privacy Policy
-      </NuxtLink>
-    </li>
-    <li>
-      <NuxtLink
-        to="/settings/terms-conditions"
-        class="btn btn-primary border border-primary bg-transparent text-primary py-2 px-3 fw-semibold"
-      >
-        Terms & Conditions
-      </NuxtLink>
-    </li>
+   
+   
+   
   </ul>
 </template>
 
