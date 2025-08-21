@@ -1,13 +1,13 @@
 <template>
   <footer class="footer-area bg-white text-center rounded-top-7">
     <p class="fs-14">
-      © <span class="text-primary-div">Trezo</span> is Proudly Owned by
+      © <span class="text-primary-div">Copyright 2025.</span>All Rights Reserved By
       <a
-        href="https://envytheme.com/"
+        href="#"
         target="_blank"
         class="text-decoration-none text-primary"
       >
-        EnvyTheme
+        AI GURUKL
       </a>
     </p>
   </footer>
