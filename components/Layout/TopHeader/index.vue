@@ -15,7 +15,7 @@
               <NuxtLink to="/dashboard" class="d-block text-decoration-none">
                 <img
                   class="logo-black"
-                  src="@/assets/images/mono.png"
+                  src="@/assets/images/mono.png" 
                   alt="logo-icon"
                 />
                 <img
