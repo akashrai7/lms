@@ -55,7 +55,7 @@
           <span class="menu-title-text">Evaluation</span>
          </li>
          <li class="menu-item">
-          <NuxtLink to="/dashboard" class="menu-link">
+          <NuxtLink to="#" class="menu-link">
             <span class="material-symbols-outlined menu-icon">
               dashboard
             </span>
@@ -70,7 +70,7 @@
           <span class="menu-title-text">Communication</span>
          </li>
          <li class="menu-item">
-          <NuxtLink to="/dashboard" class="menu-link">
+          <NuxtLink to="#" class="menu-link">
             <span class="material-symbols-outlined menu-icon">
               dashboard
             </span>
