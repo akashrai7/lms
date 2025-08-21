@@ -12,12 +12,12 @@
         <div class="mw-480 ms-lg-auto">
           <div class="d-inline-block mb-4">
             <img
-              src="~/assets/images/logo.svg"
+              src="~/assets/images/logo.png"
               class="rounded-3 for-light-logo"
               alt="login"
             />
             <img
-              src="~/assets/images/white-logo.svg"
+              src="~/assets/images/logo.png"
               class="rounded-3 for-dark-logo"
               alt="login"
             />
